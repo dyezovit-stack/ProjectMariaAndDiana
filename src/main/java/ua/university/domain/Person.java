@@ -11,14 +11,16 @@ public abstract class Person {
     private String phone;
 
     public Person(String fullName, LocalDate birthDate, String email, String phone) {
-        this.id = UUID.randomUUID().toString(); // Унікальний ID
+        this.id = UUID.randomUUID().toString();
         this.fullName = fullName;
         this.birthDate = birthDate;
         this.email = email;
         this.phone = phone;
     }
 
-    // Геттери та Сеттери (можна згенерувати або використати Lombok)
     public String getId() { return id; }
     public String getFullName() { return fullName; }
+    public LocalDate getBirthDate() { return birthDate; }
+    public String getEmail() { return email; }
+    public String getPhone() { return phone; }
 }
