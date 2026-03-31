@@ -9,7 +9,7 @@ public class Student extends Person {
     private int course;
     private String group;
     private String studentIdCard;
-    private LocalDate enrollmentDate; // Java Time API usage
+    private LocalDate enrollmentDate;
 
     public Student(String fullName, LocalDate birthDate, String email, String phone,
                    int course, String group, String studentIdCard) {
@@ -23,12 +23,10 @@ public class Student extends Person {
         this.enrollmentDate = LocalDate.now();
     }
 
-    /** Java Time API: вік студента на основі дати народження */
     public int getAge() {
         return Period.between(getBirthDate(), LocalDate.now()).getYears();
     }
 
-    /** Java Time API: роки навчання */
     public long getYearsEnrolled() {
         return Period.between(enrollmentDate, LocalDate.now()).getYears();
     }

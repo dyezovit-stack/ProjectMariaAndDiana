@@ -6,7 +6,7 @@ import java.util.List;
 public class Faculty {
     private String code;
     private String name;
-    private Teacher dean; // посилання на викладача (пункт 4.1)
+    private Teacher dean;
     private List<Department> departments = new ArrayList<>();
 
     public Faculty(String code, String name, Teacher dean) {

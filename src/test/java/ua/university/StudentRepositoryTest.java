@@ -24,12 +24,10 @@ class StudentRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        // Кожен тест починається з чистого репозиторію
         repo = new StudentRepository();
 
         alice = new Student("Alice Kovalenko", LocalDate.of(2002, 3, 15),
                 "alice@uni.ua", "111", 2, "КН-21", "BK-001");
-        // Припускаємо, що getId() повертає "BK-001" або внутрішній ID, який генерується при save
 
         bob = new Student("Bob Petrenko", LocalDate.of(2001, 7, 20),
                 "bob@uni.ua", "222", 3, "КН-31", "BK-002");
@@ -48,7 +46,6 @@ class StudentRepositoryTest {
     @Test
     @DisplayName("Пошук за ім'ям має ігнорувати регістр (якщо реалізовано)")
     void testFindByNameLambda() {
-        // Пошук за підрядком "alice"
         List<Student> result = repo.findByName("Alice");
         assertFalse(result.isEmpty(), "Студент Alice має бути знайдений");
         assertEquals("Alice Kovalenko", result.get(0).getFullName());
@@ -73,7 +70,6 @@ class StudentRepositoryTest {
     @Test
     @DisplayName("Пошук через Optional за ID")
     void testOptionalFindById() {
-        // Використовуємо номер картки як ID, якщо це передбачено логікою вашого репозиторію
         Optional<Student> found = repo.findById("BK-001");
         assertTrue(found.isPresent(), "Студент з ID BK-001 має існувати");
         assertEquals("Alice Kovalenko", found.get().getFullName());
@@ -106,7 +102,6 @@ class StudentRepositoryTest {
     @Test
     @DisplayName("Валідація курсу (1-6)")
     void testInvalidCourseThrows() {
-        // Якщо валідація в конструкторі:
         assertThrows(InvalidCourseException.class, () ->
                 new Student("Bad", LocalDate.of(2000, 1, 1), "b@uni.ua", "0", 7, "X-1", "ERR-1"));
     }
@@ -136,7 +131,7 @@ class StudentRepositoryTest {
     void testJavaTimeApiAge() {
         Student young = new Student("Young One", LocalDate.of(2005, 1, 1),
                 "y@uni.ua", "0", 1, "КН-11", "YOUNG-1");
-        int age = young.getAge(); // Припускаємо, що метод використовує Period.between
+        int age = young.getAge();
         assertTrue(age >= 18 && age < 30, "Вік студента має бути в адекватному діапазоні");
     }
 }

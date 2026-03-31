@@ -6,7 +6,7 @@ import java.util.List;
 public class Department {
     private String code;
     private String name;
-    private Teacher head; // Завідувач
+    private Teacher head;
     private List<Student> students = new ArrayList<>();
 
     public Department(String code, String name, Teacher head) {

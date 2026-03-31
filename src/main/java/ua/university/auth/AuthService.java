@@ -13,8 +13,9 @@ public class AuthService {
 
     public AuthService() {
         // Default users for demo
-        register("user1", "pass1", Role.USER);
-        register("manager1", "pass2", Role.MANAGER);
+        register("student", "login", Role.USER);
+        register("teacher", "P@ssw0rd", Role.TEACHER);
+        register("manager", "pupupu", Role.MANAGER);
     }
 
     public void register(String username, String password, Role role) {

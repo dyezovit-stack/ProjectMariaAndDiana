@@ -17,7 +17,7 @@ public class ConsoleMenu {
     private final Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        System.out.println("=== DigiUni Registry: Checkpoint 2 ===");
+        System.out.println("=== DigiUni Registry: Checkpoint 3 ===");
         loginMenu();
 
         while (true) {
@@ -47,8 +47,9 @@ public class ConsoleMenu {
 
     private void loginMenu() {
         System.out.println("\nДоступні облікові записи для демо:");
-        System.out.println("  user1 / pass1  (роль: USER)");
-        System.out.println("  manager1 / pass2  (роль: MANAGER)");
+        System.out.println("  student / login  (роль: USER)");
+        System.out.println("  teacher / P@ssw0rd  (роль: TEACHER)");
+        System.out.println("  manager / pupupu  (роль: MANAGER)");
 
         while (!authService.isLoggedIn()) {
             System.out.print("\nЛогін: ");
@@ -58,7 +59,7 @@ public class ConsoleMenu {
 
             if (authService.login(username, password)) {
                 authService.getCurrentUser().ifPresent(u ->
-                    System.out.println("Вхід успішний! " + u));
+                        System.out.println("Вхід успішний! " + u));
             } else {
                 System.out.println("Невірний логін або пароль. Спробуйте ще раз.");
             }
@@ -173,6 +174,6 @@ public class ConsoleMenu {
 
     private void showCurrentUser() {
         authService.getCurrentUser().ifPresent(u ->
-            System.out.println("Поточний користувач: " + u));
+                System.out.println("Поточний користувач: " + u));
     }
 }
