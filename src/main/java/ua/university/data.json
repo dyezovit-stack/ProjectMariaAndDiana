@@ -1,0 +1,194 @@
+{
+  "universities": [
+    {
+      "fullName": "Національний університет «Києво-Могилянська академія»",
+      "shortName": "НаУКМА",
+      "city": "Київ",
+      "address": "вул. Сковороди, 2",
+      "faculties": [
+        {
+          "code": "FI",
+          "name": "Факультет інформатики",
+          "shortName": "ФІ",
+          "dean": "Глиновець М.Ю.",
+          "departments": [
+            {
+              "code": "KMS",
+              "name": "Кафедра мультимедійних систем",
+              "head": "Бублик В.В.",
+              "location": "3-й корпус, 204 каб.",
+              "students": [
+                {
+                  "id": "2021-001",
+                  "fullName": "Шевченко Андрій Миколайович",
+                  "birthDate": "2004-05-15",
+                  "course": 3,
+                  "group": "1",
+                  "entryYear": 2021,
+                  "form": "BUDGET",
+                  "status": "STUDYING"
+                },
+                {
+                  "id": "2022-115",
+                  "fullName": "Антоненко Оксана Ігорівна",
+                  "birthDate": "2005-08-20",
+                  "course": 2,
+                  "group": "2",
+                  "entryYear": 2022,
+                  "form": "CONTRACT",
+                  "status": "STUDYING"
+                }
+              ],
+              "teachers": [
+                {
+                  "id": "T-001",
+                  "fullName": "Бублик Василь Васильович",
+                  "position": "Доцент",
+                  "degree": "к.т.н.",
+                  "hireDate": "1995-09-01",
+                  "load": 1.0
+                }
+              ]
+            },
+            {
+              "code": "KIK",
+              "name": "Кафедра інформатики",
+              "head": "Олецький О.В.",
+              "location": "3-й корпус, 110 каб.",
+              "students": [
+                {
+                  "id": "2023-050",
+                  "fullName": "Бойко Іван Васильович",
+                  "birthDate": "2006-03-12",
+                  "course": 1,
+                  "group": "1",
+                  "entryYear": 2023,
+                  "form": "BUDGET",
+                  "status": "ACADEMIC_LEAVE"
+                }
+              ],
+              "teachers": [
+                {
+                  "id": "T-004",
+                  "fullName": "Олецький Олексій Віталійович",
+                  "position": "Професор",
+                  "degree": "д.т.н.",
+                  "hireDate": "1998-10-10",
+                  "load": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fullName": "Київський національний університет імені Тараса Шевченка",
+      "shortName": "КНУ",
+      "city": "Київ",
+      "address": "вул. Володимирська, 60",
+      "faculties": [
+        {
+          "code": "FIT",
+          "name": "Факультет інформаційних технологій",
+          "shortName": "ФІТ",
+          "dean": "Теслюк В.М.",
+          "departments": [
+            {
+              "code": "KPS",
+              "name": "Кафедра програмних систем",
+              "head": "Бичков О.С.",
+              "location": "вул. Ломоносова, 81",
+              "students": [
+                {
+                  "id": "KNU-882",
+                  "fullName": "Коваленко Олег Петрович",
+                  "birthDate": "2003-11-10",
+                  "course": 4,
+                  "group": "ПІ-41",
+                  "entryYear": 2020,
+                  "form": "BUDGET",
+                  "status": "STUDYING"
+                },
+                {
+                  "id": "KNU-901",
+                  "fullName": "Білоус Світлана Романівна",
+                  "birthDate": "2004-01-05",
+                  "course": 3,
+                  "group": "ПІ-31",
+                  "entryYear": 2021,
+                  "form": "CONTRACT",
+                  "status": "STUDYING"
+                }
+              ],
+              "teachers": [
+                {
+                  "id": "T-002",
+                  "fullName": "Бичков Олексій Сергійович",
+                  "position": "Професор",
+                  "degree": "д.т.н.",
+                  "hireDate": "2003-02-15",
+                  "load": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fullName": "НТУУ «КПІ ім. І. Сікорського»",
+      "shortName": "КПІ",
+      "city": "Київ",
+      "address": "пр-т Берестейський, 37",
+      "faculties": [
+        {
+          "code": "FIOT",
+          "name": "Факультет інформатики та обчислювальної техніки",
+          "shortName": "ФІОТ",
+          "dean": "Теленик С.Ф.",
+          "departments": [
+            {
+              "code": "KOT",
+              "name": "Кафедра обчислювальної техніки",
+              "head": "Стіренко С.Г.",
+              "location": "18-й корпус",
+              "students": [
+                {
+                  "id": "KPI-551",
+                  "fullName": "Мельник Дмитро Сергійович",
+                  "birthDate": "2005-01-22",
+                  "course": 2,
+                  "group": "ІО-24",
+                  "entryYear": 2022,
+                  "form": "CONTRACT",
+                  "status": "STUDYING"
+                },
+                {
+                  "id": "KPI-302",
+                  "fullName": "Ткаченко Анна Юріївна",
+                  "birthDate": "2004-09-30",
+                  "course": 3,
+                  "group": "ІП-11",
+                  "entryYear": 2021,
+                  "form": "BUDGET",
+                  "status": "DROPPED"
+                }
+              ],
+              "teachers": [
+                {
+                  "id": "T-003",
+                  "fullName": "Стіренко Сергій Григорович",
+                  "position": "Професор",
+                  "degree": "д.т.н.",
+                  "hireDate": "2000-11-20",
+                  "load": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
