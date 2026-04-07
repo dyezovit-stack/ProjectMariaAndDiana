@@ -1,21 +1,20 @@
 package ua.university.auth;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-/**
- * Чернетка авторизації: вхід + роль користувач/менеджер для демонстрації доступу.
- */
 public class AuthService {
+    public static final int READ = 0b0001;
+    public static final int WRITE = 0b0010;
+    public static final int DELETE = 0b0100;
+    public static final int MANAGE = 0b1000;
+
     private final Map<String, User> users = new HashMap<>();
     private User currentUser = null;
 
     public AuthService() {
-        // Default users for demo
-        register("student", "login", Role.USER);
-        register("teacher", "P@ssw0rd", Role.TEACHER);
+        register("admin", "admin123", Role.ADMIN);
         register("manager", "pupupu", Role.MANAGER);
+        register("student", "login", Role.USER);
     }
 
     public void register(String username, String password, Role role) {
@@ -23,29 +22,20 @@ public class AuthService {
     }
 
     public boolean login(String username, String password) {
-        Optional<User> found = Optional.ofNullable(users.get(username));
-        return found.filter(u -> u.getPasswordHash().equals(Integer.toHexString(password.hashCode())))
-                .map(u -> { currentUser = u; return true; })
-                .orElse(false);
+        String hash = Integer.toHexString(password.hashCode());
+        User user = users.get(username);
+        if (user != null && user.getPasswordHash().equals(hash)) {
+            currentUser = user;
+            return true;
+        }
+        return false;
     }
 
-    public void logout() {
-        currentUser = null;
+    public boolean can(int permission) {
+        return currentUser != null && (currentUser.getPermissions() & permission) == permission;
     }
 
-    public Optional<User> getCurrentUser() {
-        return Optional.ofNullable(currentUser);
-    }
-
-    public boolean isLoggedIn() {
-        return currentUser != null;
-    }
-
-    public boolean hasRole(Role role) {
-        return isLoggedIn() && currentUser.getRole() == role;
-    }
-
-    public boolean isManager() {
-        return hasRole(Role.MANAGER);
-    }
+    public Optional<User> getCurrentUser() { return Optional.ofNullable(currentUser); }
+    public boolean isLoggedIn() { return currentUser != null; }
+    public List<User> getAllUsers() { return new ArrayList<>(users.values()); }
 }

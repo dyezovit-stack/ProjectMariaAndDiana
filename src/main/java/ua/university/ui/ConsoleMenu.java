@@ -1,23 +1,35 @@
 package ua.university.ui;
 
 import ua.university.auth.AuthService;
-import ua.university.auth.Role;
+import ua.university.auth.User;
 import ua.university.domain.Student;
 import ua.university.repository.StudentRepository;
+import ua.university.repository.DataStorage; // Клас для NIO.2
+import ua.university.service.StatisticsService; // Клас для Stream API
 
+import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class ConsoleMenu {
     private final StudentRepository studentRepository = new StudentRepository();
     private final AuthService authService = new AuthService();
+    private final StatisticsService statsService = new StatisticsService();
     private final Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        System.out.println("=== DigiUni Registry: Checkpoint 3 ===");
+        System.out.println("=== DigiUni Registry: Final Version 2026 ===");
+
+        // 1. NIO.2: Автоматичне завантаження при старті
+        try {
+            List<Student> loadedData = DataStorage.load();
+            studentRepository.setStudents(loadedData);
+            System.out.println("[Система] Дані завантажено успішно.");
+        } catch (Exception e) {
+            System.out.println("[Система] Файл не знайдено, створена нова база.");
+        }
+
         loginMenu();
 
         while (true) {
@@ -25,155 +37,117 @@ public class ConsoleMenu {
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1" -> addStudent();
-                case "2" -> showAllStudents();
-                case "3" -> searchStudent();
-                case "4" -> showSortedByName();
-                case "5" -> showByCourse();
-                case "6" -> showGroupedByCourse();
-                case "7" -> {
-                    if (authService.isManager()) deleteStudent();
-                    else System.out.println("Доступ заборонено! Потрібна роль MANAGER.");
+                case "1" -> {
+                    if (authService.can(AuthService.WRITE)) addStudent();
+                    else System.out.println("Помилка: У вас немає прав на ЗАПИС (WRITE).");
                 }
-                case "8" -> showCurrentUser();
+                case "2" -> showAllStudents();
+                case "3" -> generateReports(); // Stream API звіти
+                case "4" -> {
+                    if (authService.can(AuthService.DELETE)) deleteStudent();
+                    else System.out.println("Помилка: У вас немає прав на ВИДАЛЕННЯ (DELETE).");
+                }
+                case "5" -> saveToDisk(); // NIO.2 збереження
+                case "6" -> {
+                    if (authService.can(AuthService.MANAGE)) showAllUsers();
+                    else System.out.println("Доступ лише для ADMIN.");
+                }
                 case "0" -> {
-                    System.out.println("Вихід з програми...");
+                    System.out.println("Завершення роботи...");
                     return;
                 }
-                default -> System.out.println("Помилка: невірний вибір!");
+                default -> System.out.println("Невірний вибір.");
             }
         }
     }
 
     private void loginMenu() {
-        System.out.println("\nДоступні облікові записи для демо:");
-        System.out.println("  student / login  (роль: USER)");
-        System.out.println("  teacher / P@ssw0rd  (роль: TEACHER)");
-        System.out.println("  manager / pupupu  (роль: MANAGER)");
-
         while (!authService.isLoggedIn()) {
-            System.out.print("\nЛогін: ");
-            String username = scanner.nextLine().trim();
+            System.out.println("\n--- Авторизація ---");
+            System.out.print("Логін: ");
+            String login = scanner.nextLine().trim();
             System.out.print("Пароль: ");
-            String password = scanner.nextLine().trim();
+            String pass = scanner.nextLine().trim();
 
-            if (authService.login(username, password)) {
+            if (authService.login(login, pass)) {
                 authService.getCurrentUser().ifPresent(u ->
-                        System.out.println("Вхід успішний! " + u));
+                        System.out.println("Вхід успішний! Вітаємо, " + u.getUsername()));
             } else {
-                System.out.println("Невірний логін або пароль. Спробуйте ще раз.");
+                System.out.println("Невірний логін або пароль!");
             }
         }
     }
 
     private void printMainMenu() {
-        String role = authService.getCurrentUser()
-                .map(u -> "[" + u.getRole() + "]")
-                .orElse("");
-        System.out.println("\n--- Головне меню " + role + " ---");
+        User current = authService.getCurrentUser().orElse(null);
+        String role = current != null ? current.getRole().name() : "GUEST";
+
+        System.out.println("\n--- Головне меню [" + role + "] ---");
         System.out.println("1. Додати студента");
         System.out.println("2. Показати всіх студентів");
-        System.out.println("3. Пошук студента за ПІБ");
-        System.out.println("4. Студенти відсортовані за ПІБ (лямбда)");
-        System.out.println("5. Пошук за курсом (лямбда)");
-        System.out.println("6. Групування по курсах (Map)");
-        if (authService.isManager()) System.out.println("7. Видалити студента [MANAGER]");
-        System.out.println("8. Мій профіль");
+        System.out.println("3. Статистика та звіти (Stream API)");
+        if (authService.can(AuthService.DELETE)) System.out.println("4. Видалити студента (DELETE)");
+        System.out.println("5. Зберегти дані на диск (NIO.2)");
+        if (authService.can(AuthService.MANAGE)) System.out.println("6. Керування користувачами (ADMIN)");
         System.out.println("0. Вихід");
-        System.out.print("Виберіть опцію: ");
+        System.out.print("> ");
+    }
+
+    // --- Stream API: Звіти ---
+    private void generateReports() {
+        List<Student> students = studentRepository.findAll();
+        if (students.isEmpty()) {
+            System.out.println("Немає даних для аналізу.");
+            return;
+        }
+
+        System.out.println("\n--- Аналітика системи ---");
+        // Звіт 1 через Stream
+        long count = students.stream().count();
+        System.out.println("Загальна кількість студентів: " + count);
+
+        // Звіт 2: Групування по курсах
+        statsService.getCountByCourse(students).forEach((course, n) ->
+                System.out.println("Курс " + course + ": " + n + " студентів"));
+    }
+
+    // --- NIO.2: Збереження ---
+    private void saveToDisk() {
+        try {
+            DataStorage.save(studentRepository.findAll());
+            System.out.println("Дані успішно збережено у файл.");
+        } catch (IOException e) {
+            System.out.println("Помилка запису: " + e.getMessage());
+        }
     }
 
     private void addStudent() {
         System.out.print("ПІБ: ");
         String name = scanner.nextLine().trim();
-        if (name.isBlank()) { System.out.println("Помилка: ПІБ порожнє!"); return; }
-
+        System.out.print("Курс: ");
+        int course = Integer.parseInt(scanner.nextLine().trim());
         System.out.print("Група: ");
         String group = scanner.nextLine().trim();
 
-        System.out.print("Курс (1-6): ");
-        int course;
-        try {
-            course = Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Помилка: невірний формат курсу!"); return;
-        }
-
-        System.out.print("Залікова книжка: ");
-        String idCard = scanner.nextLine().trim();
-
-        try {
-            Student student = new Student(name, LocalDate.of(2000, 1, 1),
-                    "email@university.ua", "000", course, group, idCard);
-            studentRepository.save(student);
-            System.out.println("Студента успішно додано!");
-        } catch (Exception e) {
-            System.out.println("Помилка: " + e.getMessage());
-        }
+        Student s = new Student(name, LocalDate.now(), "email", "000", course, group, "ID" + System.currentTimeMillis());
+        studentRepository.save(s);
+        System.out.println("Студента додано.");
     }
 
     private void showAllStudents() {
-        List<Student> students = studentRepository.findAll();
-        if (students.isEmpty()) { System.out.println("Список порожній."); return; }
-        students.forEach(System.out::println);
-        System.out.println("Всього: " + students.size());
-    }
-
-    private void searchStudent() {
-        System.out.print("Введіть ПІБ: ");
-        String name = scanner.nextLine().trim();
-        // Lambda usage: filter by name
-        List<Student> result = studentRepository.findByName(name);
-        if (result.isEmpty()) System.out.println("Не знайдено.");
-        else result.forEach(System.out::println);
-    }
-
-    private void showSortedByName() {
-        // Lambda: sort by name
-        List<Student> sorted = studentRepository.findAllSortedByName();
-        if (sorted.isEmpty()) { System.out.println("Список порожній."); return; }
-        System.out.println("--- Відсортовано за ПІБ ---");
-        sorted.forEach(System.out::println);
-    }
-
-    private void showByCourse() {
-        System.out.print("Курс: ");
-        try {
-            int course = Integer.parseInt(scanner.nextLine().trim());
-            // Lambda: filter by course
-            List<Student> result = studentRepository.findByCourse(course);
-            if (result.isEmpty()) System.out.println("Студентів на " + course + " курсі не знайдено.");
-            else result.forEach(System.out::println);
-        } catch (NumberFormatException e) {
-            System.out.println("Невірний формат.");
-        }
-    }
-
-    private void showGroupedByCourse() {
-        // Map: group by course
-        Map<Integer, List<Student>> grouped = studentRepository.groupByCourse();
-        if (grouped.isEmpty()) { System.out.println("Список порожній."); return; }
-        grouped.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .forEach(e -> {
-                    System.out.println("\n  Курс " + e.getKey() + ":");
-                    e.getValue().forEach(s -> System.out.println("    " + s));
-                });
+        studentRepository.findAll().forEach(System.out::println);
     }
 
     private void deleteStudent() {
-        System.out.print("Введіть ID студента для видалення: ");
+        System.out.print("Введіть ID для видалення: ");
         String id = scanner.nextLine().trim();
-        try {
-            studentRepository.delete(id);
-            System.out.println("Студента видалено.");
-        } catch (Exception e) {
-            System.out.println("Помилка: " + e.getMessage());
-        }
+        studentRepository.delete(id);
+        System.out.println("Видалено.");
     }
 
-    private void showCurrentUser() {
-        authService.getCurrentUser().ifPresent(u ->
-                System.out.println("Поточний користувач: " + u));
+    private void showAllUsers() {
+        System.out.println("\n--- Користувачі системи (Admin View) ---");
+        authService.getAllUsers().forEach(u ->
+                System.out.println(u.getUsername() + " | Роль: " + u.getRole() + " | Маска: " + Integer.toBinaryString(u.getPermissions())));
     }
 }
