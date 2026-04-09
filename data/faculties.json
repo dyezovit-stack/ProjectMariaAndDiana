@@ -3,35 +3,11 @@
   "name" : "Факультет інформатики",
   "shortName" : "ФІ",
   "deanId" : "T-001",
-  "contacts" : "fi@ukma.edu.ua, корп. 1, к. 322"
+  "contacts" : "корп. 1, к. 322, fi@ukma.edu.ua"
 }, {
   "code" : "FGN",
   "name" : "Факультет гуманітарних наук",
   "shortName" : "ФГН",
   "deanId" : "T-020",
-  "contacts" : "fgn@ukma.edu.ua, корп. 1, к. 215"
-}, {
-  "code" : "FEN",
-  "name" : "Факультет економічних наук",
-  "shortName" : "ФЕН",
-  "deanId" : "T-030",
-  "contacts" : "fen@ukma.edu.ua, корп. 6, к. 401"
-}, {
-  "code" : "FPRN",
-  "name" : "Факультет правничих наук",
-  "shortName" : "ФПрН",
-  "deanId" : "T-040",
-  "contacts" : "fprn@ukma.edu.ua, корп. 4, к. 110"
-}, {
-  "code" : "FPNN",
-  "name" : "Факультет природничих наук",
-  "shortName" : "ФПнН",
-  "deanId" : "T-050",
-  "contacts" : "fpnn@ukma.edu.ua, корп. 3, к. 205"
-}, {
-  "code" : "FSNST",
-  "name" : "Факультет соціальних наук і соціальних технологій",
-  "shortName" : "ФСНСТ",
-  "deanId" : "T-060",
-  "contacts" : "fsnst@ukma.edu.ua, корп. 4, к. 212"
+  "contacts" : "корп. 1, к. 215, fgn@ukma.edu.ua"
 } ]

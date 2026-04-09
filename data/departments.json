@@ -10,28 +10,4 @@
   "headTeacherId" : "T-001",
   "location" : "корп. 6, к. 402",
   "facultyCode" : "FI"
-}, {
-  "code" : "PHIL-DEPT",
-  "name" : "Кафедра філософії",
-  "headTeacherId" : "T-020",
-  "location" : "корп. 1, к. 201",
-  "facultyCode" : "FGN"
-}, {
-  "code" : "UKR-DEPT",
-  "name" : "Кафедра української мови",
-  "headTeacherId" : "T-022",
-  "location" : "корп. 1, к. 218",
-  "facultyCode" : "FGN"
-}, {
-  "code" : "FIN-DEPT",
-  "name" : "Кафедра фінансів",
-  "headTeacherId" : "T-030",
-  "location" : "корп. 6, к. 415",
-  "facultyCode" : "FEN"
-}, {
-  "code" : "LAW-DEPT",
-  "name" : "Кафедра правознавства",
-  "headTeacherId" : "T-040",
-  "location" : "корп. 4, к. 101",
-  "facultyCode" : "FPRN"
 } ]
