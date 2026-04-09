@@ -118,3 +118,8 @@ com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize 
 2026-04-09 16:04:27 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
 2026-04-09 16:04:27 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
 2026-04-09 16:04:34 [main] INFO  ua.university.auth.AuthService - User logged in: admin with role ADMIN
+2026-04-09 16:06:27 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-09 16:06:27 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-09 16:08:32 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-09 16:08:32 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-09 16:08:43 [main] INFO  ua.university.auth.AuthService - User logged in: admin with role ADMIN

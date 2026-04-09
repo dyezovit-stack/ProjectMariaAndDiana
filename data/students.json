@@ -40,4 +40,67 @@
   },
   "fullName" : "Мельник Марія Ігорівна",
   "age" : 18
+}, {
+  "id" : "S-2024-10",
+  "firstName" : "Олександр",
+  "lastName" : "Петренко",
+  "patronymic" : "Сергійович",
+  "birthDate" : "2006-11-05",
+  "email" : "petrenko.o@ukma.edu.ua",
+  "phone" : "+380503334455",
+  "studentId" : "BK 22345680",
+  "course" : 2,
+  "group" : "Б-2",
+  "enrollYear" : 2024,
+  "studyForm" : "CONTRACT",
+  "status" : "STUDYING",
+  "departmentCode" : "MM-DEPT",
+  "emailOptional" : {
+    "empty" : false,
+    "present" : true
+  },
+  "fullName" : "Петренко Олександр Сергійович",
+  "age" : 19
+}, {
+  "id" : "S-2023-05",
+  "firstName" : "Тетяна",
+  "lastName" : "Коваленко",
+  "patronymic" : "Василівна",
+  "birthDate" : "2005-04-18",
+  "email" : "kovalenko.t@ukma.edu.ua",
+  "phone" : "+380931234567",
+  "studentId" : "BK 32345681",
+  "course" : 3,
+  "group" : "Б-1",
+  "enrollYear" : 2023,
+  "studyForm" : "BUDGET",
+  "status" : "STUDYING",
+  "departmentCode" : "PHIL-DEPT",
+  "emailOptional" : {
+    "empty" : false,
+    "present" : true
+  },
+  "fullName" : "Коваленко Тетяна Василівна",
+  "age" : 20
+}, {
+  "id" : "S-2022-12",
+  "firstName" : "Максим",
+  "lastName" : "Сидоренко",
+  "patronymic" : "Артемович",
+  "birthDate" : "2004-12-12",
+  "email" : "sydorenko.m@ukma.edu.ua",
+  "phone" : "+380631110022",
+  "studentId" : "BK 42345683",
+  "course" : 4,
+  "group" : "Б-2",
+  "enrollYear" : 2022,
+  "studyForm" : "BUDGET",
+  "status" : "ACADEMIC_LEAVE",
+  "departmentCode" : "LAW-DEPT",
+  "emailOptional" : {
+    "empty" : false,
+    "present" : true
+  },
+  "fullName" : "Сидоренко Максим Артемович",
+  "age" : 21
 } ]
