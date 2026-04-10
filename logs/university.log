@@ -223,3 +223,78 @@ com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve sub
 	at ua.university.ui.ConsoleMenu.start(ConsoleMenu.java:24) [classes/:?]
 	at ua.university.Main.main(Main.java:8) [classes/:?]
 2026-04-09 16:24:23 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-09 16:25:52 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-09 16:25:52 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-09 16:26:04 [main] INFO  ua.university.auth.AuthService - User logged in: admin with role ADMIN
+2026-04-09 16:26:22 [main] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-09 16:26:22 [main] INFO  ua.university.service.AutoSaveService - Auto-save stopped
+2026-04-09 16:26:25 [main] ERROR ua.university.service.PersistenceService - Failed to load data
+com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class ua.university.domain.Student]: missing type id property 'type'
+ at [Source: (File); line: 22, column: 1] (through reference chain: java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidTypeIdException.from(InvalidTypeIdException.java:43) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.DeserializationContext.missingTypeIdException(DeserializationContext.java:2094) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingTypeId(DeserializationContext.java:1607) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.TypeDeserializerBase._handleMissingTypeId(TypeDeserializerBase.java:307) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer._deserializeTypedUsingDefaultImpl(AsPropertyTypeDeserializer.java:211) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer.deserializeTypedFromObject(AsPropertyTypeDeserializer.java:145) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeWithType(BeanDeserializerBase.java:1296) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:361) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3677) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at ua.university.service.PersistenceService.loadAll(PersistenceService.java:68) [classes/:?]
+	at ua.university.ui.ConsoleMenu.start(ConsoleMenu.java:24) [classes/:?]
+	at ua.university.Main.main(Main.java:8) [classes/:?]
+2026-04-09 16:26:25 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-09 17:00:05 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-09 17:00:05 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-09 17:00:12 [main] WARN  ua.university.auth.AuthService - Failed login attempt for: admin
+2026-04-09 17:00:17 [main] WARN  ua.university.auth.AuthService - Failed login attempt for: admin123
+2026-04-09 17:00:21 [main] INFO  ua.university.auth.AuthService - User logged in: admin with role ADMIN
+2026-04-10 08:50:53 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 08:50:53 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-10 09:14:12 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:14:12 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-10 09:14:25 [main] INFO  ua.university.auth.AuthService - User logged in: admin with role ADMIN
+2026-04-10 09:15:03 [main] WARN  ua.university.ui.ConsoleMenu - University exception: Факультет з ID '1' не знайдено
+2026-04-10 09:16:12 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-10 09:16:12 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:16:21 [main] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:16:37 [main] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:16:37 [main] INFO  ua.university.service.AutoSaveService - Auto-save stopped
+2026-04-10 09:16:46 [main] ERROR ua.university.service.PersistenceService - Failed to load data
+com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve subtype of [simple type, class ua.university.domain.Student]: missing type id property 'type'
+ at [Source: (File); line: 22, column: 1] (through reference chain: java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidTypeIdException.from(InvalidTypeIdException.java:43) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.DeserializationContext.missingTypeIdException(DeserializationContext.java:2094) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingTypeId(DeserializationContext.java:1607) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.TypeDeserializerBase._handleMissingTypeId(TypeDeserializerBase.java:307) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer._deserializeTypedUsingDefaultImpl(AsPropertyTypeDeserializer.java:211) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer.deserializeTypedFromObject(AsPropertyTypeDeserializer.java:145) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeWithType(BeanDeserializerBase.java:1296) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer._deserializeFromArray(CollectionDeserializer.java:361) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:244) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:28) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3677) ~[jackson-databind-2.15.2.jar:2.15.2]
+	at ua.university.service.PersistenceService.loadAll(PersistenceService.java:68) [classes/:?]
+	at ua.university.ui.ConsoleMenu.start(ConsoleMenu.java:24) [classes/:?]
+	at ua.university.Main.main(Main.java:8) [classes/:?]
+2026-04-10 09:16:46 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-10 09:16:51 [main] INFO  ua.university.auth.AuthService - User logged in: manager with role MANAGER
+2026-04-10 09:17:04 [main] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:17:04 [main] INFO  ua.university.service.AutoSaveService - Auto-save stopped
+2026-04-10 09:17:07 [main] INFO  ua.university.service.PersistenceService - Data loaded from C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:17:07 [main] INFO  ua.university.service.AutoSaveService - Auto-save started, interval=120s
+2026-04-10 09:17:10 [main] INFO  ua.university.auth.AuthService - User logged in: user with role USER
+2026-04-10 09:19:07 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-10 09:19:07 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:21:07 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-10 09:21:07 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:23:07 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-10 09:23:07 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
+2026-04-10 09:25:07 [auto-save] INFO  ua.university.service.AutoSaveService - Auto-save triggered
+2026-04-10 09:25:07 [auto-save] INFO  ua.university.service.PersistenceService - Data saved successfully to C:\Users\Asus\Desktop\ProjectMariaAndDiana\data
